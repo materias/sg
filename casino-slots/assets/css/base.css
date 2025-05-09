@@ -1,0 +1,20 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #0a2a5a;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #b8d6ff;
+  min-height: 100vh;
+}
+:root {
+  --color-bg-main: #0a2a5a;
+  --color-bg-header: linear-gradient(90deg, #054392 0%, #032858 100%);
+  --color-bg-sidebar: linear-gradient(180deg, #043675 0%, #032858 100%);
+  --color-accent: #FFD535;
+  --color-btn: #b8d6ff;
+  --color-btn-hover: #fff;
+  --color-slot-title: #FFD535;
+} 

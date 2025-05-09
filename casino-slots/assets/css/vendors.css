@@ -1,0 +1,57 @@
+@import url('../slick/slick.css');
+@import url('../slick/slick-theme.css');
+
+.banner-slider {
+  max-height: 360px;
+}
+
+.slider__dots {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  display: flex !important;
+  gap: 16px;
+  z-index: 10;
+}
+
+.slider__dot {
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.slider__dot-button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.slider__dot-button::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.slider__dot--active .slider__dot-button::before {
+  background: #fff;
+  border: 2px solid #fff;
+}
+
+.slick-slider, .slick-dotted {
+	margin-bottom: 0 !important;
+}
