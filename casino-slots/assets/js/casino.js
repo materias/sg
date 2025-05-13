@@ -12,28 +12,45 @@ jQuery(document).ready(function ($) {
     var formData = new FormData(this);
     formData.append("action", "add_slot");
     $.ajax({
-      url: ajaxurl,
+      url: casino_ajax.ajaxurl,
       type: "POST",
       data: formData,
       processData: false,
       contentType: false,
       success: function (response) {
-        $("#add-slot-message").html(response.data ? response.data : response);
-        if (response.success) location.reload();
+        if (response.success && response.data && response.data.html) {
+          $(".slots__list").append(response.data.html);
+          $("#addSlotModal").removeClass("modal--active");
+          updateSlotNumbers();
+          $("#add-slot-form")[0].reset();
+        } else {
+          alert(response.data ? response.data : "Slot creation error");
+        }
+      },
+      error: function () {
+        alert("Connection error");
       },
     });
   });
 
-  $(".slot-list").on("click", ".slot-delete", function () {
-    if (confirm("Удалить слот?")) {
+  $(".slots__list").on("click", ".slots__item-delete", function () {
+    if (confirm("Delete this slot?")) {
       var slotId = $(this).data("id");
-      $.post(ajaxurl, { action: "delete_slot", slot_id: slotId }, function (resp) {
+      $.post(casino_ajax.ajaxurl, { action: "delete_slot", slot_id: slotId }, function (resp) {
         if (resp.success) {
-          $('.slot[data-id="' + slotId + '"]').remove();
+          $('.slots__item[data-id="' + slotId + '"]')
+            .parent()
+            .remove();
         } else {
-          alert("Ошибка удаления");
+          alert("Delete error");
         }
       });
     }
   });
+
+  function updateSlotNumbers() {
+    $('.slots__item-number').each(function(index) {
+      $(this).text(index + 1);
+    });
+  }  
 });
