@@ -264,19 +264,15 @@
 
 .slots__item-badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 13px;
+  left: -17px;
   background: #ed0187;
   color: #fff;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.slots__item-badge--exclusive {
-  background: #ffd700;
-  color: #000;
+  padding: 3px 12px;
+  font-size: 8px;
+  font-weight: 800;
+  transform: rotate(-45deg);
+  letter-spacing: 0.5px;
 }
 
 .add-slot-btn {
